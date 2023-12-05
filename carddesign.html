@@ -25,34 +25,18 @@
 					<img src="cards/front3png.png"/>
 				</div>
 			</div>
-			<input type="text" id="textname"/>
+			<input type="text" id="altertext"/>
 			<object id="imported-svg" type="image/svg+xml" width="500px" data="cards/onecard.svg"></object>
-
-	</body>
-	<script
+		</div>
+		<script
   src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
   crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		var selection = document.getElementsByClassName("selection");
-
-		$(".selection img").on("click",function(e){
-			$(this).siblings().removeClass("active");
-			$(this).parent().siblings("img").attr("src",$(this).attr("src"));
-			$(this).attr("class","active");
+		window.addEventListener('load',() => {
+			$.getScript("js/carddesign.js");
 		});
-
-		const isElementLoaded = async selector => {
-	      while ( document.querySelector(selector) === null) {
-	        await new Promise( resolve =>  requestAnimationFrame(resolve) )
-	      }
-	      return document.querySelector(selector);
-	    };
-
-    // I'm checking for a specific class .file-item and then running code. You can also check for an id or an element.
-    isElementLoaded('text#name').then((selector) => {
-        console.log("hello");
-    });
-	
 	</script>
+	</body>
+	
 </html>
