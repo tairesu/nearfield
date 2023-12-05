@@ -79,6 +79,9 @@ background-size: contain;
 	background-color: white;
 
 }
+object{
+	margin:auto;
+}
 .display img{
 	margin:auto;
 }
@@ -97,11 +100,9 @@ background-size: contain;
 	cursor: pointer;
 	box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19) !important;
 }
-text {
-      fill: blue;
-      font-size: 16px;
-
+.input-div{
+	text-align:center;
 }
-text tspan{
+.input-div input{
 	margin:auto;
 }

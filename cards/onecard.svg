@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.9221636"
-     inkscape:cx="200.75423"
-     inkscape:cy="118.55602"
+     inkscape:cx="107.33077"
+     inkscape:cy="168.34866"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -144,5 +144,13 @@
            y="275.71286"
            id="tspan936"
            style="stroke-width:0.07137881">he / him / his</tspan></tspan></text>
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#0000f6;stroke-width:0.02533475;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:39.22031021;stroke-opacity:1"
+       id="positioner"
+       width="37.69603"
+       height="25.041561"
+       x="43.929653"
+       y="256.84656"
+       inkscape:label="#rect837" />
   </g>
 </svg>
