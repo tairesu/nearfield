@@ -106,3 +106,8 @@ object{
 .input-div input{
 	margin:auto;
 }
+tspan{
+	white-space: nowrap !important;
+	position:absolute !important;
+	fill:red !important;
+}

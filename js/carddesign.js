@@ -11,11 +11,22 @@ function sendToInput(textEle){
 
 //onkeyup, find the corresponding tspan element and change it's html
 function setSvgText(tspanId, newText){
-	var textEle = $svgText.find(tspanId)[0];
-	$textEle = $(textEle);
-	$textEle.html(newText);
+	var textEle = $svgText.find(tspanId)[0], 
+	positioner = $(svg).find("#positioner")[0];
+	$(textEle).html(newText);
 
-	console.log($(svg).find("#positioner")[0].width);
+	textEleWidth = textEle.textLength.baseVal.value;
+
+	newXPos = ((parseFloat($(positioner).attr('width')) - textEleWidth) / 2) + parseFloat($(positioner).attr('x'));
+	$(textEle).attr('x', newXPos);
+	 //Uncomment to Debug element shift
+	console.log(textEle);
+	console.log( $("object").contents().children()[0].width.baseVal.value);
+	console.log("Rect width: " + $(positioner).attr('width'));
+	console.log("Rect x: " + $(positioner).attr('x'));
+	console.log("Text width: " + textEleWidth);
+	console.log("Text x: " + $(textEle).attr('x'));
+	console.log("New Text x: " + newXPos);
 }
 $('.selection img').on('click', function (e) {
     $(this).siblings().removeClass('active');
