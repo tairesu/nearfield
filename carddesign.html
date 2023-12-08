@@ -9,26 +9,25 @@
 		<div class="row">
 			<div id="rear-display" class="display col-md-6">
 				<p> Rear of Card </p>
-				<img src="cards/b-bkg-o-i.png" class="display-image"/>
 				<div id="selection" class="selection">
 					<img src="cards/o-bkg-bw-i.png" />
 					<img src="cards/classic.png" />
 					<img src="cards/b-bkg-o-i.png" class="active"/>
 				</div>
+				<img src="cards/b-bkg-o-i.png" class="display-image"/>
 			</div>
 			<div id="front-display" class="display col-md-6">
 				<p> Front of Card </p>
-				<img src="cards/front1.png" class="display-image"/>
 				<div id="front-selection" class="selection">
-					<img src="cards/front1.png" class="active"/>
-					<img src="cards/front2png.png" />
-					<img src="cards/front3png.png"/>
+					<img src="cards/onecard.svg" class="active"/>
+					<img src="cards/modern-left-text.svg" />
+					<img src="cards/classic.svg"/>
 				</div>
+				<img src="cards/onecard.svg" class="display-image"/>
 			</div>
-
 		</div>
 		<div class="d-flex justify-content-center">
-			<object id="imported-svg" type="image/svg+xml"  data="cards/onecard.svg"></object>
+			<object id="imported-svg" type="image/svg+xml"  data=""></object>
 		</div>
 		<div class="input-div d-flex justify-content-center">
 			<input class="col-md-6 form-control form-control-lg" type="text" id="altertext"/>
@@ -37,11 +36,26 @@
   src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
   crossorigin="anonymous"></script>
-	<script type="text/javascript">
-		window.addEventListener('load',() => {
-			$.getScript("js/carddesign.js");
-		});
-	</script>
+	  	<script>
+		  	window.addEventListener('load',() => {
+		  		function reload_js(src) {
+			        $('script[src="' + "js/carddesign.js" + '"]').remove();
+			        $('<script>').attr('src', src).appendTo('body');
+			    }
+		  		$('.selection img').on('click', function (e) {
+				    $(this).siblings().removeClass('active');
+				    $(this).parent().siblings('img').attr('src', $(this).attr('src'));
+				    $(this).attr('class', 'active');
+
+				    if($(this).attr('src').indexOf('svg') > -1){
+					    $("object").attr('data', $(this).attr('src'));
+			   			setTimeout(()=>{
+			   				reload_js('js/carddesign.js');
+			   			}, 500);
+			   		}
+				});
+			});
+		</script>
 	</body>
 	
 </html>

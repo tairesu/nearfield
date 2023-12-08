@@ -3,49 +3,54 @@ var svg = $("object").contents().children().children("g");
 $svgText = $(svg).children("text");
 
 //Updates input value with clicked .svg text element's html
-function sendToInput(textEle){
+function updateInput(textEle){
+	//Clear the current Value
 	$("#altertext").val("");
+
+	//Set the placeholder
 	$("#altertext").attr('placeholder',textEle.target.innerHTML);
+
+	//Set the lockedOn attribute to the ID of selected text ele
 	$("#altertext").attr('lockedon','#' + textEle.target.id)
 }
 
 //onkeyup, find the corresponding tspan element and change it's html
-function setSvgText(tspanId, newText){
-	var textEle = $svgText.find(tspanId)[0], 
+function updateSvgText(tspanId, newText){
+	var tspanEle = $svgText.find(tspanId)[0],
 	positioner = $(svg).find("#positioner")[0];
-	$(textEle).html(newText);
+	
+	//Update text for text element w/ id=tspanID
+	$(tspanEle).html(newText);
 
-	textEleWidth = textEle.textLength.baseVal.value;
+	//Centers the inner tspan if the parent tag has 'rel' in id
+	if($(tspanEle).parent().parent().attr('id').indexOf('rel') > -1){
+		tspanEleWidth = tspanEle.textLength.baseVal.value;
+		newXPos = ((parseFloat($(positioner).attr('width')) - tspanEleWidth) / 2) + parseFloat($(positioner).attr('x'));
+		$(tspanEle).attr('x', newXPos);
+	}
+	
 
-	newXPos = ((parseFloat($(positioner).attr('width')) - textEleWidth) / 2) + parseFloat($(positioner).attr('x'));
-	$(textEle).attr('x', newXPos);
-	 //Uncomment to Debug element shift
-	console.log(textEle);
+	/*//Uncomment to Debug element shift
+	console.log(tspanEle);
 	console.log( $("object").contents().children()[0].width.baseVal.value);
 	console.log("Rect width: " + $(positioner).attr('width'));
 	console.log("Rect x: " + $(positioner).attr('x'));
-	console.log("Text width: " + textEleWidth);
-	console.log("Text x: " + $(textEle).attr('x'));
-	console.log("New Text x: " + newXPos);
+	console.log("Text width: " + tspanEleWidth);
+	console.log("Text x: " + $(tspanEle).attr('x'));
+	console.log("New Text x: " + newXPos);*/
 }
-$('.selection img').on('click', function (e) {
-    $(this).siblings().removeClass('active');
-    $(this).parent().siblings('img').attr('src', $(this).attr('src'));
-    $(this).attr('class', 'active');
-});
 
-//Loop through text element in the .svg and add event listener onclick
+
+//Loop through text elements in the .svg and add event listener onclick
 $svgText.each(function(index){
 	var text = $svgText[index];
 	$text = $(text);
-	$text.on('click',sendToInput);
+	$text.on('click',updateInput);
 });
 
-//Sets the html for desired text element from 
+//Update the selected svg text element with input's text 
 $('#altertext').on('keyup', function(e){
-	setSvgText($(this).attr('lockedon'), $(this).val());
-
-
+	updateSvgText($(this).attr('lockedon'), $(this).val());
 });
 	
 
