@@ -106,8 +106,14 @@ object{
 .input-div input{
 	margin:auto;
 }
-tspan{
+tspan tspan {
+	border-radius:30px;
 	white-space: nowrap !important;
 	position:absolute !important;
 	fill:red !important;
+}
+tspan{
+	text-shadow: 0 0 20px red !important
+}
+
 }
