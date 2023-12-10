@@ -114,6 +114,10 @@ tspan tspan {
 }
 tspan{
 	text-shadow: 0 0 20px red !important
+
 }
 
+
+.selection div{
+	text-align: center;
 }
