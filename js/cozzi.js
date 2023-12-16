@@ -46,7 +46,10 @@ $("#populate").on('click',function(){
 	//Loop a number of times
 	for(i=0; i<$("#number").val(); i++){ 
 		newDiv = document.createElement("div");
-		$(newDiv).attr('design', $("#card-design").val());
+		$(newDiv).attr({
+			'design': $("#card-design").val(),
+			'class': 'hideme'
+		});
 
 		//creates a fixed number of input tags in newDiv
 		for(x=0;x < inputs.length; x++){
@@ -71,5 +74,5 @@ $("#finalize").on('click',function(){
 		var card = new Card($(this).find("input[name=name]")[0].value,$(this).find("input[name=email]")[0].value,$(this).find("input[name=cell]")[0].value);
 		cards.push(card)
 	});
-	
 });
+window.onbeforeprint = window.onafterprint = (e) =>{ $('.hideme').toggle()};
