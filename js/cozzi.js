@@ -11,6 +11,7 @@ class Card{
 	createSVG(){
 		this.card = document.createElement("object");
 		this.card.data = "cards/cozzicards.svg";
+		this.card.width = "688.697px";
 		this.card.type = 'image/svg+xml';
 		this.card.addEventListener('load',() => {
 			this.setText(this.card);
@@ -20,17 +21,16 @@ class Card{
 	//Sets the text in SVG element to initiating variables
 	setText(svgObj){
 		var tspanEles = svgObj.contentDocument.querySelectorAll("text tspan");
-		console.log(tspanEles);
 		tspanEles.forEach((ele,i) => {
-			console.log(ele.parentElement.id);
 			ele.innerHTML = this.inputValues[ele.parentElement.id];
 
 			//centers the updated text if grandparent's id has rel in it 
-			console.log($(ele).parent());
-			if ($(ele).parent().parent().attr('id').indexOf("rel") >-1) {
+			if ($(ele).parent().attr('inkscape:label').indexOf("rel") >-1) {
 				var rect = svgObj.contentDocument.querySelector("rect#positioner");
 				var eleWidth = ele.textLength.baseVal.value;
-				var newXPos = ((parseFloat($(rect).attr('width')) - eleWidth) / 2) + parseFloat($(rect).attr('x'));
+
+				var newXPos = ((parseFloat($(rect).attr('width')) - eleWidth) / 2) + parseFloat($(rect).attr('width'));
+				
 				$(ele).attr('x',newXPos);
 			}
 			
