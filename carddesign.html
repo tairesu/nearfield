@@ -2,10 +2,22 @@
 <html>
 	<head>
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="css/site.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/site.css">
 	</head>
 	<body>
+		<nav class="navbar navbar-">
+  <a class="navbar-brand" href="#">
+    <img src="cards/nearfieldlogo.png" width="35" height="35" class="d-inline-block align-top" alt="">
+  </a>
+</nav>
+		<div class="d-flex justify-content-center setdesigns">
+			<img src="cards/b-bkg-o-i.png" id="rearcard" class="cardsize">
+			<object id="imported-svg" type="image/svg+xml" class="cardsize" data=""></object>
+		</div>
+		<div class="input-div d-flex justify-content-center">
+			<input class="col-md-6 form-control form-control-lg" type="text" id="altertext"/>
+		</div>
 		<div class="row">
 			<div id="rear-display" class="display col-md-6">
 				<p> Rear of Card </p>
@@ -14,7 +26,6 @@
 					<img src="cards/classic.png" />
 					<img src="cards/b-bkg-o-i.png" class="active"/>
 				</div>
-				<img src="cards/b-bkg-o-i.png" class="display-image"/>
 			</div>
 			<div id="front-display" class="display col-md-6">
 				<p> Front of Card </p>
@@ -23,15 +34,9 @@
 					<img src="cards/modern-left-text.svg" />
 					<img src="cards/classic.svg"/>
 				</div>
-				<img src="cards/onecard.svg" class="display-image"/>
 			</div>
 		</div>
-		<div class="d-flex justify-content-center">
-			<object id="imported-svg" type="image/svg+xml"  data=""></object>
-		</div>
-		<div class="input-div d-flex justify-content-center">
-			<input class="col-md-6 form-control form-control-lg" type="text" id="altertext"/>
-		</div>
+		
 		<script
   src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -42,17 +47,20 @@
 			        $('script[src="' + "js/carddesign.js" + '"]').remove();
 			        $('<script>').attr('src', src).appendTo('body');
 			    }
-		  		$('.selection img').on('click', function (e) {
+		  		$('.selection img').on('click', function (e){
 				    $(this).siblings().removeClass('active');
-				    $(this).parent().siblings('img').attr('src', $(this).attr('src'));
+				    
 				    $(this).attr('class', 'active');
 
 				    if($(this).attr('src').indexOf('svg') > -1){
 					    $("object").attr('data', $(this).attr('src'));
-			   			setTimeout(()=>{
-			   				reload_js('js/carddesign.js');
-			   			}, 500);
+
+			   		} else {
+			   			$("#rearcard").attr('src', $(this).attr('src'));
 			   		}
+		   			setTimeout(()=>{
+		   				reload_js('js/carddesign.js');
+		   			}, 500);
 				});
 			});
 		</script>

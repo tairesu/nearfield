@@ -65,14 +65,18 @@ $("#populate").on('click',function(){
 //Creates the cards if they dont exists
 $("#finalize").on('click',function(){
 	cards = []; 
-	
 	if ($("#svg-grid object").length > 0)
 		$("#svg-grid object").remove();
 	
 	$("#svg-grid div[design]").each(function(e){
-
 		var card = new Card($(this).find("input[name=name]")[0].value,$(this).find("input[name=email]")[0].value,$(this).find("input[name=cell]")[0].value);
-		cards.push(card)
+		cards.push(card);
+	});
+	$(".pagebreak").remove();
+	//Add print pagebreak after 3 cards
+	$("#svg-grid object").each((i,ele) =>{
+		if((i+1) % 3 ==0){
+			$("<div class='pagebreak'></div>").insertAfter($(ele));
+		}
 	});
 });
-window.onbeforeprint = window.onafterprint = (e) =>{ $('.hideme').toggle()};

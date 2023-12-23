@@ -1,8 +1,26 @@
+.row {
+margin:0 !important;
+}
+@media print {
+
+	.hideme{
+		display:none;
+	}
+    .pagebreak { 
+    	clear:both;
+    	height:1px;
+    	page-break-after: always; } /* page-break-after works, as well */
+}
+
 body{
-	background-color:grey;
+	background-color:#f6e8e1ff;
 	margin:0;
 	padding:0;
 	width:100%;
+}
+nav{
+	background-color: #ff5500ff;
+	height:5em;
 }
 #container{
 	display: flex;
@@ -70,17 +88,17 @@ background-size: contain;
 #icons{
 	width:100%;
 	padding: 2em;
-	background-color: white;
+}
+.cardsize{
+	width:355.3px;
+	height:226.77px;
+	padding:1em;
 }
 .display{
 	text-align:center !important;
 	width:100%;
-	padding:5em;
-	background-color: white;
+	padding:1em 5em;
 
-}
-object{
-	margin:auto;
 }
 .display img{
 	margin:auto;
@@ -104,7 +122,7 @@ object{
 	text-align:center;
 }
 .input-div input{
-	margin:auto;
+	margin:1em 0;
 }
 tspan tspan {
 	border-radius:30px;
