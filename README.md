@@ -12,5 +12,7 @@ They had a business card template that I was able to mimick/modernize in Inkscap
 Step 1 took too long for an order of that magnitude, so built this repo to house the tools that were designed to help save time in the process. 
 
  # Tools
- ## Dynamic Card Template Updater
+ ## Single Card Template Updater
 
+ carddesign.html lets me choose a design (SVG), and dynamically update certain SVG text objects. (Javascript)
+ 
